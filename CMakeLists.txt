@@ -17,38 +17,31 @@ project(force_control_collection LANGUAGES CXX)
 # mc_rtc
 add_project_dependency(mc_rtc REQUIRED)
 
-if(DEFINED CATKIN_DEVEL_PREFIX)
+if(NOT DEFINED USE_ROS2)
   set(DOXYGEN_HTML_OUTPUT html)
-  find_package(catkin REQUIRED COMPONENTS
-    roscpp
-    qp_solver_collection
-  )
+  find_package(ament_cmake REQUIRED)
+  find_package(rclcpp REQUIRED)
+  find_package(qp_solver_collection REQUIRED)
 
   # Eigen
   find_package(Eigen3 REQUIRED)
   include_directories(${EIGEN3_INCLUDE_DIR})
 
-  catkin_package(
-    CATKIN_DEPENDS
-    roscpp
-    qp_solver_collection
-    DEPENDS EIGEN3
-    INCLUDE_DIRS include
-    LIBRARIES ForceColl
-  )
 
-  include_directories(include ${catkin_INCLUDE_DIRS})
-  link_directories(${catkin_LIBRARY_DIRS})
+  include_directories(include ${ament_INCLUDE_DIRS})
+  link_directories(${ament_LIBRARY_DIRS})
+
+  ament_package()
 else()
   set(DOXYGEN_HTML_OUTPUT doxygen-html)
-  set(CATKIN_ENABLE_TESTING OFF)
+  set(BUILD_TESTING OFF)
   option(BUILD_SHARED_LIBS "Build libraries as shared as opposed to static" ON)
   add_project_dependency(qp_solver_collection REQUIRED)
 endif()
 
 add_subdirectory(src)
 
-if(BUILD_TESTING OR CATKIN_ENABLE_TESTING)
+if(BUILD_TESTING)
   add_subdirectory(tests)
 endif()
 
