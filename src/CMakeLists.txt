@@ -3,8 +3,8 @@ add_library(ForceColl
   WrenchDistribution.cpp
   )
 target_link_libraries(ForceColl PUBLIC mc_rtc::mc_rtc_utils mc_rtc::mc_rtc_gui)
-if(DEFINED CATKIN_DEVEL_PREFIX)
-  target_link_libraries(ForceColl PUBLIC ${catkin_LIBRARIES})
+if(DEFINED USE_ROS2)
+  target_link_libraries(ForceColl PUBLIC ${ament_LIBRARIES})
 else()
   target_link_libraries(ForceColl PUBLIC qp_solver_collection::QpSolverCollection)
 endif()
