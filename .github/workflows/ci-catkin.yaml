@@ -91,9 +91,6 @@ jobs:
           sudo rosdep init
           rosdep update
           rosdep install -y -r --from-paths src --ignore-src
-      - name: Debug CMAKE_INSTALL_PREFIX
-        run: |
-          echo "CMAKE_INSTALL_PREFIX=${{ github.workspace }}/install"
       - name: Colcon build
         run: |
           set -e

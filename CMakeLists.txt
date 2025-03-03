@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
+cmake_policy(SET CMP0167 NEW)
 
 set(PROJECT_NAME force_control_collection)
 set(PROJECT_GENERATED_HEADERS_SKIP_DEPRECATED ON)
