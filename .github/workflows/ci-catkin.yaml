@@ -39,7 +39,7 @@ jobs:
     steps:
       - name: Set ROS version
         run: |
-          if [ "${{ matrix.os }}" == "ubuntu-20.04" ]
+          if [ "${{ matrix.os }}" == "ubuntu-22.04" ]
           then
             echo "ROS_DISTRO=noetic" >> $GITHUB_ENV
             echo "PYTHON_PACKAGE_PREFIX=python3" >> $GITHUB_ENV
@@ -113,7 +113,7 @@ jobs:
           catkin_test_results --verbose --all build
       - name: Upload documentation
         # Only run for one configuration and on origin master branch
-        if: matrix.os == 'ubuntu-20.04' && matrix.build-type == 'RelWithDebInfo' && matrix.mc-rtc-version == 'head' && github.repository_owner == 'isri-aist' && github.ref == 'refs/heads/master'
+        if: matrix.os == 'ubuntu-22.04' && matrix.build-type == 'RelWithDebInfo' && matrix.mc-rtc-version == 'head' && github.repository_owner == 'isri-aist' && github.ref == 'refs/heads/master'
         run: |
           set -e
           set -x
