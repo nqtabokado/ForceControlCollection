@@ -114,11 +114,10 @@ jobs:
           set -e
           set -x
           cd ${GITHUB_WORKSPACE}/colcon_ws
-          set +x
-          . install/setup.bash
+          ls ${{ github.workspace }}/install
           set -x
-          colcon test --packages-select qp_solver_collection
-          colcon test-result --all --verbose
+          sudo colcon test --packages-select qp_solver_collection
+          sudo colcon test-result --all --verbose
       - name: Upload documentation
         # Only run for one configuration and on origin master branch
         if: matrix.os == 'ubuntu-22.04' && matrix.build-type == 'RelWithDebInfo' && matrix.mc-rtc-version == 'head' && github.repository_owner == 'isri-aist' && github.ref == 'refs/heads/master'
