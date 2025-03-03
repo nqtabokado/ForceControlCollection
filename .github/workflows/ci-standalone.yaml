@@ -17,6 +17,10 @@ jobs:
       matrix:
         os: [ubuntu-22.04]
         build-type: [Debug, RelWithDebInfo]
+        mc-rtc-version: [head, stable]
+        exclude:
+          - build-type: Debug
+            mc-rtc-version: stable
         compiler: [gcc, clang]
     runs-on: ${{ matrix.os }}
     steps:
@@ -25,6 +29,7 @@ jobs:
         submodules: recursive
     - name: Install dependencies
       run: |
+        curl -1sLf 'https://dl.cloudsmith.io/public/mc-rtc/${{ matrix.mc-rtc-version }}/setup.deb.sh' | sudo -E bash
         sudo apt update && sudo apt install -y cmake libmc-rtc-dev libgtest-dev
         sudo apt install software-properties-common
         sudo add-apt-repository universe
