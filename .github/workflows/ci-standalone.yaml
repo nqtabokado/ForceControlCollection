@@ -32,7 +32,7 @@ jobs:
           apt-mirrors:
             mc-rtc:
               cloudsmith: mc-rtc/head
-          apt: cmake libqpsolvercollection-dev libmc-rtc-dev libgtest-dev
+          apt: cmake libmc-rtc-dev libgtest-dev
     - name: Build and test
       uses: jrl-umi3218/github-actions/build-cmake-project@master
       with:
