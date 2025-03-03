@@ -84,15 +84,15 @@ jobs:
           repository: nqtabokado/QpSolverCollection
           submodules: recursive
           path: colcon_ws/src/QpSolverCollection
-      - name: Rosdep install
-        run: |
-          set -e
-          set -x
-          cd ${GITHUB_WORKSPACE}/colcon_ws
-          set -x
-          sudo rosdep init
-          rosdep update
-          rosdep install -y -r --from-paths src --ignore-src
+      # - name: Rosdep install
+      #   run: |
+      #     set -e
+      #     set -x
+      #     cd ${GITHUB_WORKSPACE}/colcon_ws
+      #     set -x
+      #     sudo rosdep init
+      #     rosdep update
+      #     rosdep install -y -r --from-paths src --ignore-src
       # - name: Colcon build
       #   run: |
       #     set -e
