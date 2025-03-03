@@ -78,8 +78,8 @@ jobs:
       - name: Checkout QpSolverCollection
         uses: actions/checkout@v2
         with:
-          ref: ros2
-          repository: chuoru/QpSolverCollection
+          ref: feature/implement-ci-ros2
+          repository: nqtabokado/QpSolverCollection
           submodules: recursive
           path: colcon_ws/src/QpSolverCollection
       - name: Rosdep install
