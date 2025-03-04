@@ -94,7 +94,9 @@ jobs:
       - name: Fix permissions
         run: sudo chmod -R 777 ${{ github.workspace }}/colcon_ws/install
       - name: Source setup.bash
-        run: echo "source ${{ github.workspace }}/colcon_ws/install/setup.bash" >> $GITHUB_ENV
+        run: |
+          echo "COLCON_PREFIX_PATH=${{ github.workspace }}/colcon_ws/install" >> $GITHUB_ENV
+          source $COLCON_PREFIX_PATH/setup.bash
       - name: Colcon build force_control_collection
         uses: jrl-umi3218/github-actions/build-colcon-project@master
         with:
