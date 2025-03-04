@@ -84,7 +84,6 @@ jobs:
           set -x
           cd ${GITHUB_WORKSPACE}/colcon_ws
           doxygen -u ./src/QpSolverCollection/doc/Doxyfile.in
-          doxygen -u ./src/ForceControlCollection/doc/Doxyfile.extra.in
       - name: Colcon build qp_solver_collection
         uses: jrl-umi3218/github-actions/build-colcon-project@master
         with:
