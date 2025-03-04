@@ -71,11 +71,6 @@ jobs:
           cd ${GITHUB_WORKSPACE}/colcon_ws
           set +x
           . /opt/ros/${ROS_DISTRO}/setup.bash
-      # - name: Checkout repository code
-      #   uses: actions/checkout@v2
-      #   with:
-      #     submodules: recursive
-      #     path: colcon_ws/src/ForceControlCollection
       - name: Checkout QpSolverCollection
         uses: actions/checkout@v2
         with:
