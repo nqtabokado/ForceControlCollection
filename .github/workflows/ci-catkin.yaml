@@ -84,8 +84,6 @@ jobs:
       #     set -x
       #     cd ${GITHUB_WORKSPACE}/colcon_ws
       #     doxygen -u ./src/QpSolverCollection/doc/Doxyfile.in
-      - name: Fix permissions
-        run: sudo chmod -R 777 ${{ github.workspace }}/colcon_ws/install
       - name: Colcon build qp_solver_collection
         uses: jrl-umi3218/github-actions/build-colcon-project@master
         with:
@@ -93,6 +91,8 @@ jobs:
           cmake-args: -DUSE_ROS2=ON -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DENABLE_QLD=ON -DINSTALL_DOCUMENTATION=false -DCMAKE_PREFIX_PATH=${{ github.workspace }}/colcon_ws/install
           build-packages: qp_solver_collection
           test-packages: qp_solver_collection
+      - name: Fix permissions
+        run: sudo chmod -R 777 ${{ github.workspace }}/colcon_ws/install
       - name: Source setup.bash
         run: echo "source ${{ github.workspace }}/colcon_ws/install/setup.bash" >> $GITHUB_ENV
       - name: Colcon build force_control_collection
