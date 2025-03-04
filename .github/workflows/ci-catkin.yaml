@@ -115,11 +115,6 @@ jobs:
           cmake-args: -DUSE_ROS2=ON -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DENABLE_QLD=ON -DINSTALL_DOCUMENTATION=ON
           build-packages: qp_solver_collection
           test-packages: qp_solver_collection
-      # - name: Checkout repository code
-      #   uses: actions/checkout@v2
-      #   with:
-      #     submodules: recursive
-      #     path: colcon_ws/src/ForceControlCollection
       - name: Colcon build force_control_collection
         uses: jrl-umi3218/github-actions/build-colcon-project@master
         with:
