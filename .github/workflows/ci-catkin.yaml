@@ -78,12 +78,12 @@ jobs:
           repository: nqtabokado/QpSolverCollection
           submodules: recursive
           path: colcon_ws/src/QpSolverCollection
-      - name: Update Doxyfile
-        run: |
-          set -e
-          set -x
-          cd ${GITHUB_WORKSPACE}/colcon_ws
-          doxygen -u ./src/QpSolverCollection/doc/Doxyfile.in
+      # - name: Update Doxyfile
+      #   run: |
+      #     set -e
+      #     set -x
+      #     cd ${GITHUB_WORKSPACE}/colcon_ws
+      #     doxygen -u ./src/QpSolverCollection/doc/Doxyfile.in
       - name: Colcon build qp_solver_collection
         uses: jrl-umi3218/github-actions/build-colcon-project@master
         with:
