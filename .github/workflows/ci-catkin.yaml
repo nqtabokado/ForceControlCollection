@@ -88,7 +88,7 @@ jobs:
         uses: jrl-umi3218/github-actions/build-colcon-project@master
         with:
           build-type: ${{ matrix.build-type }}
-          cmake-args: -DUSE_ROS2=ON -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DENABLE_QLD=ON -DINSTALL_DOCUMENTATION=ON
+          cmake-args: -DUSE_ROS2=ON -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DENABLE_QLD=ON -DINSTALL_DOCUMENTATION=false
           build-packages: qp_solver_collection
           test-packages: qp_solver_collection
       - name: Colcon build force_control_collection
