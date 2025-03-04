@@ -88,14 +88,14 @@ jobs:
         uses: jrl-umi3218/github-actions/build-colcon-project@master
         with:
           build-type: ${{ matrix.build-type }}
-          cmake-args: -DUSE_ROS2=ON -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DENABLE_QLD=ON -DINSTALL_DOCUMENTATION=false
+          cmake-args: -DUSE_ROS2=ON -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DENABLE_QLD=ON -DINSTALL_DOCUMENTATION=false -DCMAKE_PREFIX_PATH=${{ github.workspace }}/colcon_ws/install
           build-packages: qp_solver_collection
           test-packages: qp_solver_collection
       - name: Colcon build force_control_collection
         uses: jrl-umi3218/github-actions/build-colcon-project@master
         with:
           build-type: ${{ matrix.build-type }}
-          cmake-args: -DUSE_ROS2=ON -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DAMENT_CMAKE_UNINSTALL_TARGET=OFF
+          cmake-args: -DUSE_ROS2=ON -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DAMENT_CMAKE_UNINSTALL_TARGET=OFF -DCMAKE_PREFIX_PATH=${{ github.workspace }}/colcon_ws/install
           build-packages: force_control_collection
           test-packages: force_control_collection
       - name: Upload documentation
