@@ -31,7 +31,7 @@ jobs:
       matrix:
         os: [ubuntu-22.04]
         build-type: [Debug, RelWithDebInfo]
-        standalone: [standalone, colcon]
+        standalone: [standalone]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Set environment variables
@@ -68,7 +68,7 @@ jobs:
       - name: Checkout repository code
         if: matrix.standalone == 'standalone'
         uses: actions/checkout@v3
-      - name: Standalone build
+      - name: Debug standalone build
         if: matrix.standalone == 'standalone'
         uses: jrl-umi3218/github-actions/build-cmake-project@master
         with:
